@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=/home/joefitz/Documents/Projects/bbv3/bbv3-jtagkey/impact.xsl
+OUTFILE=/home/joefitz/Documents/Projects/bbv3/bbv3-jtagkey/impact.xsl
+FAMILY=Single
+PART=Single
+WORKINGDIR=/home/joefitz/Documents/Projects/bbv3/bbv3-jtagkey
+LICENSE=iMPACT
+USER_INFO=iMPACT

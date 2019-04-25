@@ -1,0 +1,40 @@
+Joe FitzPatrick
+joefitz@securinghardware.com
+
+This is my first attempt at bundling some files together for the Bus Blaster V3, hopefully i'm not duplicating or infringing on someone else's efforts.
+
+All of this is based entirely on the BBv2 and limited BBv3 code found in the svn:
+https://code.google.com/p/dangerous-prototypes-open-hardware/source/browse/#svn%2Ftrunk%2FBus_Blaster%2Fbuffer_logic%253Fstate%253Dclosed
+
+files:
+bbv3.ucf - constraints based on pin mapping of bbv3
+passthrough.v - verilog to pass through jtag signals and make the BB work like a ftdi cable
+jtagkey.v - verilog to emulate the jtagkey logic and enables
+
+for each ucf/v combination there's a separate folder that includes the xilinx ise project and the impact project.
+for each ucf/v combo there's also an svf that has been tested with urjtag
+
+I'll try to port and test a couple more buffer logics, and try and keep the version specifics in the ucf.
+
+Tested with:
+Ubuntu 12.04.3 64bit
+libftdi (sudo apt-get install libftdi1)
+urJtag v0.10 (sudo apt-get install urjtag)
+
+To write and use the passthrough logic:
+jtag> cable ft2232 pid=0x6010 vid=0x0403 interface=1
+jtag> detect
+jtag> svf bbv3-passthrough.svf stop progress
+jtag> cable ft2232 pid=0x6010 vid=0x0403
+jtag> detect
+jtag> svf ....
+
+To write and use the jtagkey logic:
+jtag> cable ft2232 pid=0x6010 vid=0x0403 interface=1
+jtag> detect
+jtag> svf bbv3-passthrough.svf stop progress
+jtag> cable jtagkey pid=0x6010 vid=0x0403
+jtag> detect
+jtag> svf ....
+
+

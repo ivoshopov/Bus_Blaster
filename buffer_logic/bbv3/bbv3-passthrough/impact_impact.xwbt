@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=/home/joefitz/Documents/Projects/bbv3/bbv3-passthrough/impact.xsl
+OUTFILE=/home/joefitz/Documents/Projects/bbv3/bbv3-passthrough/impact.xsl
+FAMILY=Single
+PART=Single
+WORKINGDIR=/home/joefitz/Documents/Projects/bbv3/bbv3-passthrough
+LICENSE=iMPACT
+USER_INFO=iMPACT
