@@ -39,3 +39,24 @@ The output should looks like:
         Chain length: 1
         Device Id: 01011011101000000000010001110111 (0x5BA00477)
           Unknown manufacturer! (01000111011) (/usr/local/share/urjtag/MANUFACTURERS)
+## Troubleshooting
+
+When we have following error:
+
+        jtag> cable ft2232 interface=1 VID=0403 PID=6010
+        error: Couldn't connect to suitable USB device.
+        error: ftdi/ftd2xx error: ftdi_usb_open_desc() failed: device not found
+
+It can be because urjtag is build with wrong driver. It should be build with libftd2xx from FTDI https://www.ftdichip.com/Drivers/D2XX.htm.
+Just follow https://www.ftdichip.com/Drivers/D2XX/Linux/ReadMe-linux.txt and than:
+
+        sudo cp release/WinTypes.h /usr/local/include/
+        sudo cp release/ftd2xx.h /usr/local/include/
+        
+Build urjtag from source:
+
+        git clone git://git.code.sf.net/p/urjtag/git
+        cd urjtag
+        ./configure --disable-python
+        make
+        make install        
